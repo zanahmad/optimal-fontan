@@ -1,0 +1,5 @@
+*
+!.gitignore
+!vary_fenestration/
+!closed_fenestration/
+!open_fenestration/
