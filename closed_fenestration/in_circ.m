@@ -4,8 +4,8 @@ T=0.0125; %1/T =F = 80 beats/min
 TS=0.0050; 
 tauS=0.0025;
 tauD=0.0075;
-tau1 = 0.269*T % time scale of contraction (minutes)
-tau2 = 0.452*T % duration of systole (minutes)
+tau1 = 0.269*T 
+tau2 = 0.452*T 
 m1 = 1.32
 m2 = 27.4
 %initialization of maxnum
@@ -32,10 +32,11 @@ Rs=17.5*1.05; % systemic organs
 Rp=1.79*.45;  % lungs
 RTr=0.01;     % Tricuspid valve
 RAo=0.01;     % aortic valve: connecting RV and sa
-RFo=.01;      % Fontan connection
+RFo=0.01;      % Fontan connection
 RFe = inf; 
 
 % specify compliance parameters
+
 Csa=0.00175*.23*2.5;
 Cpa=0.00412*.1;
 Csv=1.75*.15;
