@@ -4,10 +4,10 @@ T=0.0125; %1/T =F = 80 beats/min
 TS=0.0050; 
 tauS=0.0025;
 tauD=0.0075;
-tau1 = 0.269*T % time scale of contraction (minutes)
-tau2 = 0.452*T % duration of systole (minutes)
-m1 = 1.32
-m2 = 27.4
+tau1 = 0.269*T; % time scale of contraction (minutes)
+tau2 = 0.452*T; % duration of systole (minutes)
+m1 = 1.32;
+m2 = 27.4;
 %initialization of maxnum
 tt=0:(T/1000):T;
 g1=(tt/tau1).^m1;
@@ -15,18 +15,15 @@ g2=(tt/tau2).^m2;
 g2T=(T/tau2)^m2;
 G1=g1./(1+g1);
 G2=(1./(1+g2)) - (1/(1+g2T));
-maxnum = max(G1.*G2)
+maxnum = max(G1.*G2);
 
 %Gorlin Equation Parameters
 rho = 1000/(1.36*980*10*3600); %density of blood in mmHg min^2 / dm^2
 R_visc = .001; %viscosity 
 
-
-
 max_iterate = 10 ; 
 %number of iterations for fixed point 
 %method on conductances
-
 
 % specify resistance parameters
 
@@ -154,7 +151,7 @@ G(iRV,isa)=1/RAo;  %But G(isa,iRV)=0; (no leak)
 G(isv,ipv)=1./RFe;  
 G(ipv,isv)=1./RFe;
 
-G  %This writes the result on the screen.
+G;  %This writes the result on the screen.
 %Matrix of initial valve states:
 S=zeros(N,N);   
 %This makes S an NxN matrix filled with zeros

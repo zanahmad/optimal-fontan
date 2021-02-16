@@ -3,12 +3,13 @@ clear all; close all;  clc;
 % pulsatile code below
 num_compliance_chambers = 5;
 num_resistors = 6;
-A0_vec = linspace(0.00,0.006, 5); %cross sectional area array in dm^2
+A0_vec = linspace(0.00,0.006, 2); %cross sectional area array in dm^2
 mean_pressure = zeros(num_compliance_chambers, length(A0_vec));
 mean_O2_concentration = zeros(num_compliance_chambers, length(A0_vec));
 mean_flow = zeros(num_resistors, length(A0_vec));
-Rp_vec = linspace(0.01, 4, 5);
-for jj=1:length(Rp_vec) 
+Rp_vec = linspace(0.01, 4, 2);
+for jj=1:length(Rp_vec)
+    fprintf('%s %d \n', "Rp index = ", jj);
     Rp = Rp_vec(jj);
 for ii = 1:length(A0_vec)
     A0 = A0_vec(ii); %cross sectional area in dm^2
@@ -24,11 +25,11 @@ optimal_size = A0_vec(optimal_index);
 optimal_size_plot(jj) = optimal_size;
 end
 
-
 figure(600)
 plot( Rp_vec,A0_vec.*100,'linewidth',5);
 ylabel('$A_{0}$ (cm$^2$)','interpreter','latex')
 xlabel('$R_p$ mmHg/(L/min)','interpreter','latex')
-title('optimal fenistration size, varying $R_p$','interpreter','latex')
+title('optimal fenestration size','interpreter','latex')
 set(gca,'fontsize',18)
 
+save optimal_size_versus_Rp.mat
