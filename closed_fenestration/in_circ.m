@@ -40,7 +40,7 @@ Csa=0.00175*.23*2.5;
 Cpa=0.00412*.1;
 Csv=1.75*.15;
 Cpv=(0.8)/3.5;
-CRVS=0.00001;
+CRVS=1/3e3; % 0.00001;
 CRVD=0.0365/4;
 
 %parameters for elastance
@@ -54,7 +54,7 @@ EmaxRV =  1/CRVS; % (mmHg/L)
 
 dt=0.01*T;%Time step duration (minutes)
           
-klokmax=500*T/dt; %Total number of timesteps
+klokmax=50*T/dt; %Total number of timesteps
 %This choice implies simulation of 500 cardiac cycles.
 
 for klok=1:klokmax
