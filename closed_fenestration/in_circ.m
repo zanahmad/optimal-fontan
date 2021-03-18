@@ -28,20 +28,20 @@ R_visc = .001; %viscosity
 
 % specify resistance parameters
 
-Rs=17.5*1.05; % systemic organs
-Rp=1.79*.45;  % lungs
+Rs=17.5*1.5; % systemic organs
+Rp=1.79*.35;  % lungs
 RTr=0.01;     % Tricuspid valve
 RAo=0.01;     % aortic valve: connecting RV and sa
 RFo=.01;      % Fontan connection
 RFe = inf; 
 
 % specify compliance parameters
-Csa=0.00175*.23*2.5;
+Csa=0.00175;
 Cpa=0.00412*.1;
 Csv=1.75*.15;
-Cpv=(0.8)/3.5;
+Cpv=.1;
 CRVS=1/(3e3);
-CRVD=0.0365/4;
+CRVD=1/104;
 
 %parameters for elastance
 EminRV =  1/CRVD;% (mmHg/L)
@@ -90,11 +90,11 @@ C(ipv)=Cpv;
 C;  %This writes the result on the screen.
 
 % specify dead volumes
-Vsad=0.825;
-Vpad=0.0382;
+Vsad=0.325;
+Vpad=0.0282;
 Vsvd=0.0;
 Vpvd=0.0;
-VRVd=0.027;
+VRVd=0.017;
 Vd=zeros(N,1);  
 %This makes Vd a column vector of length N.
 Vd(isa)=Vsad;
