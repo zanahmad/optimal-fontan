@@ -28,16 +28,16 @@ R_visc = .001; %viscosity
 
 % specify resistance parameters
 
-Rs=17.5*1.5; % systemic organs
-Rp=1.79*.35;  % lungs
+Rs=17.5*1.25; % systemic organs
+Rp=1.79*.5;  % lungs
 RTr=0.01;     % Tricuspid valve
 RAo=0.01;     % aortic valve: connecting RV and sa
 RFo=.01;      % Fontan connection
 RFe = inf; 
 
 % specify compliance parameters
-Csa=0.00175;
-Cpa=0.00412*.1;
+Csa=0.00175*.85;
+Cpa=0.00412*.5;
 Csv=1.75*.15;
 Cpv=.1;
 CRVS=1/(3e3);
@@ -94,7 +94,7 @@ Vsad=0.325;
 Vpad=0.0282;
 Vsvd=0.0;
 Vpvd=0.0;
-VRVd=0.017;
+VRVd=0.027;
 Vd=zeros(N,1);  
 %This makes Vd a column vector of length N.
 Vd(isa)=Vsad;
