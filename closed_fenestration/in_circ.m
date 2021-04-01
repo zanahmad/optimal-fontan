@@ -28,7 +28,7 @@ R_visc = .001; %viscosity
 
 % specify resistance parameters
 
-Rs=17.5*1.35; % systemic organs
+Rs=17.5; % systemic organs
 Rp=1.79*.2;  % lungs
 RTr=0.01;     % Tricuspid valve
 RAo=0.01;     % aortic valve: connecting RV and sa
@@ -36,8 +36,8 @@ RFo=.01;      % Fontan connection
 RFe = inf; 
 
 % specify compliance parameters
-Csa=0.00175*.85;
-Cpa=0.00412*1.5;
+Csa=0.00175*.45;
+Cpa=0.00412*2;
 Csv=1.75*.2;
 Cpv=.1;
 CRVS=1/(3e3);
@@ -104,7 +104,7 @@ Vd(ipa)=Vpad;
 Vd(ipv)=Vpvd;
 Vd;
 
-Vtotal=5; % set the total volume
+Vtotal=5.7; % set the total volume
 Vdist = Vtotal - sum(Vd); % in Liters
 %initialize volume of the ith compliance chamber
 V(isa)=Vdist*(C(isa)/(C(isa)+C(isv)+C(iRV)+C(ipa)+C(ipv))) + Vd(isa);
