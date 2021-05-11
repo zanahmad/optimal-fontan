@@ -27,10 +27,10 @@ max_iterate = 10 ;
 
 % specify resistance parameters
 
-Rs=17.5*1.05; % systemic organs
+Rs=17.5*1.3; % systemic organs
 RTr=0.01;     % Tricuspid valve
 RAo=0.01;     % aortic valve: connecting RV and sa
-RFo=.01;      % Fontan connection
+RFo=.01; 
 if (A0 > 0)
    RFe=R_visc; %R_visc;     %Fenestration resistance
 else
@@ -38,12 +38,12 @@ else
 end 
 
 % specify compliance parameters
-Csa=0.00175*.23*2.5;
-Cpa=0.00412*.1;
-Csv=1.75*.15;
-Cpv=(0.8)/3.5;
-CRVS=0.00001;
-CRVD=0.0365/4;
+Csa=0.00175*1.8;
+Cpa=0.00412*1.5;
+Csv=0.09*1.1;
+Cpv=.01*1.5;
+CRVS=1/(3e3);
+CRVD=1/84; % 1/104
 
 %parameters for elastance
 EminRV =  1/CRVD;% (mmHg/L)
@@ -92,11 +92,11 @@ C(ipv)=Cpv;
 C;  %This writes the result on the screen.
 
 % specify dead volumes
-Vsad=0.825;
-Vpad=0.0382;
-Vsvd=0.0;
-Vpvd=0.0;
-VRVd=0.027;
+Vsad=0.7; %0.825
+Vpad=0.1135; %0.1135
+Vsvd=2; %3.5
+Vpvd=0.15;%.18
+VRVd=0.02;%0.01
 Vd=zeros(N,1);  
 %This makes Vd a column vector of length N.
 Vd(isa)=Vsad;
@@ -106,7 +106,7 @@ Vd(ipa)=Vpad;
 Vd(ipv)=Vpvd;
 Vd;
 
-Vtotal=5.0; % set the total volume
+Vtotal=4.8; % set the total volume
 Vdist = Vtotal - sum(Vd); % in Liters
 %initialize volume of the ith compliance chamber
 V(isa)=Vdist*(C(isa)/(C(isa)+C(isv)+C(iRV)+C(ipa)+C(ipv))) + Vd(isa);
