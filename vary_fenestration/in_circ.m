@@ -4,10 +4,10 @@ T=0.0125; %1/T =F = 80 beats/min
 TS=0.0050; 
 tauS=0.0025;
 tauD=0.0075;
-tau1 = 0.269*T % time scale of contraction (minutes)
-tau2 = 0.452*T % duration of systole (minutes)
-m1 = 1.32
-m2 = 27.4
+tau1 = 0.269*T; % time scale of contraction (minutes)
+tau2 = 0.452*T; % duration of systole (minutes)
+m1 = 1.32;
+m2 = 27.4;
 %initialization of maxnum
 tt=0:(T/1000):T;
 g1=(tt/tau1).^m1;
@@ -15,7 +15,7 @@ g2=(tt/tau2).^m2;
 g2T=(T/tau2)^m2;
 G1=g1./(1+g1);
 G2=(1./(1+g2)) - (1/(1+g2T));
-maxnum = max(G1.*G2)
+maxnum = max(G1.*G2);
 
 %Gorlin Equation Parameters
 rho = 1000/(1.36*980*10*3600); %density of blood in mmHg min^2 / dm^2
@@ -29,9 +29,8 @@ max_iterate = 10 ;
 
 
 % specify resistance parameters
-
-Rs=17.5*1.05; % systemic organs
-Rp=1.79*.45;  % lungs
+Rs=17.5*1.3; % systemic organs
+Rp=1.79*.5;  % lungs
 RTr=0.01;     % Tricuspid valve
 RAo=0.01;     % aortic valve: connecting RV and sa
 RFo=.01;      % Fontan connection
@@ -42,12 +41,12 @@ else
 end 
 
 % specify compliance parameters
-Csa=0.00175*.23*2.5;
-Cpa=0.00412*.1;
-Csv=1.75*.15;
-Cpv=(0.8)/3.5;
-CRVS=0.00001;
-CRVD=0.0365/4;
+Csa=0.00175*1.8;
+Cpa=0.00412*1.5;
+Csv=0.09*1.1;
+Cpv=.01*1.5;
+CRVS=1/(3e3);
+CRVD=1/84; % 1/104
 
 %parameters for elastance
 EminRV =  1/CRVD;% (mmHg/L)
@@ -96,11 +95,11 @@ C(ipv)=Cpv;
 C;  %This writes the result on the screen.
 
 % specify dead volumes
-Vsad=0.825;
-Vpad=0.0382;
-Vsvd=0.0;
-Vpvd=0.0;
-VRVd=0.027;
+Vsad=0.7; %0.825
+Vpad=0.1135; %0.1135
+Vsvd=2; %3.5
+Vpvd=0.15;%.18
+VRVd=0.02;%0.01
 Vd=zeros(N,1);  
 %This makes Vd a column vector of length N.
 Vd(isa)=Vsad;
@@ -110,7 +109,7 @@ Vd(ipa)=Vpad;
 Vd(ipv)=Vpvd;
 Vd;
 
-Vtotal=5.0; % set the total volume
+Vtotal=4.8; % set the total volume
 Vdist = Vtotal - sum(Vd); % in Liters
 %initialize volume of the ith compliance chamber
 V(isa)=Vdist*(C(isa)/(C(isa)+C(isv)+C(iRV)+C(ipa)+C(ipv))) + Vd(isa);

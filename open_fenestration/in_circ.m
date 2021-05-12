@@ -24,9 +24,6 @@ R_visc = .001; %viscosity
 
 
 
-max_iterate = 10 ; 
-%number of iterations for fixed point 
-%method on conductances
 
 
 % specify resistance parameters

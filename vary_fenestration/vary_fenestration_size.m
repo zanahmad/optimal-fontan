@@ -28,25 +28,18 @@ plot(A0_vec.*100, mean_O2_concentration(1,:) .* mean_flow(1,:),'linewidth',5);
 xlabel('$A_{0}$','interpreter','latex')
 ylabel('$Q[O_2]$ (Liters/min)','interpreter','latex')
 title('oxygen delivery, varying $A_{0}$','interpreter','latex')
-id = legend("Pulsatile");
-legend boxoff
-set(gca,'fontsize',18)
+
 
 figure(601)
 plot(A0_vec, mean_flow(1,:),'linewidth',5);
 xlabel('$A_{0}$','interpreter','latex')
 ylabel('$Q$ (Liters/min)','interpreter','latex')
 title('cardiac output, varying $A_{0}$','interpreter','latex')
-id = legend("Pulsatile");
-legend boxoff
-set(gca,'fontsize',18)
 
 figure(602)
 plot(A0_vec, mean_O2_concentration(1,:),'linewidth',5);
 xlabel('$A_{0}$','interpreter','latex')
 ylabel('$[O_2]$','interpreter','latex')
 title('oxygen concentration,varying $A_{0}$','interpreter','latex')
-id = legend("Pulsatile");
-legend boxoff
-set(gca,'fontsize',18)
+
 
