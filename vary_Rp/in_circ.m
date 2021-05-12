@@ -21,9 +21,7 @@ maxnum = max(G1.*G2);
 rho = 1000/(1.36*980*10*3600); %density of blood in mmHg min^2 / dm^2
 R_visc = .001; %viscosity 
 
-max_iterate = 10 ; 
-%number of iterations for fixed point 
-%method on conductances
+
 
 % specify resistance parameters
 

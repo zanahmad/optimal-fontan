@@ -13,7 +13,6 @@ for ii = 1:length(A0_vec)
     A0 = A0_vec(ii); %cross sectional area in dm^2
     circ   
     circ_out
-    hold on
 end
 
 
