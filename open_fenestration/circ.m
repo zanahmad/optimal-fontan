@@ -84,5 +84,3 @@ fprintf('systemic artery mean pressure (mmHg):%i \n', sa_P_mean)
 fprintf('pul artery mean pressure (mmHg):%i \n', pa_P_mean)
 
 
-
-
