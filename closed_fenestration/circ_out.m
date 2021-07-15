@@ -33,6 +33,13 @@ xlim([klokmax*dt-1000*dt klokmax*dt])
 
 figure(3)%pressure-volume loops for right ventricle
 plot(V_plot(iRV,:),P_plot(iRV,:),'linewidth',3)
+hold on
+plot([VRVd,.125],[0,EminRV*(.125-VRVd)],'linewidth', 3)
+hold on
+plot([VRVd,.075],[0,EmaxRV*(.075-VRVd)],'linewidth', 3)
+hold on
+plot(.111,6.6,'r*','linewidth',3)
+plot(.0517,124,'b*','linewidth',3)
 title('Pressure Volume Loop RV')
 xlabel('V (L)')
 ylabel('P (mmHg)')

@@ -1,6 +1,12 @@
 %filename: in_circ.m  (initialization for circ)
 
-T=0.0125; %1/T =F = 80 beats/min
+heart_rate = 72.5; %beats per min
+T=1/heart_rate; 
+
+dt=0.01*T;%Time step duration (minutes)
+          
+klokmax=ceil(500*T/dt); %Total number of timesteps
+%This choice implies simulation of 500 cardiac cycles.
 TS=0.0050; 
 tauS=0.0025;
 tauD=0.0075;
@@ -19,29 +25,43 @@ maxnum = max(G1.*G2);
 
 %Gorlin Equation Parameters
 rho = 1000/(1.36*980*10*3600); %density of blood in mmHg min^2 / dm^2
-R_visc = .001; %viscosity 
+R_visc = .001; %viscosity
 
-
-
-
+isa=1;
+isv=2;
+ipa=3;
+ipv=4;
+iRV=5;
+ N=5;
 
 
 % specify resistance parameters
 
-Rs=17.5*1.3; % systemic organs
-Rp=1.79*.5;  % lungs
-RTr=0.01;     % Tricuspid valve
-RAo=0.01;     % aortic valve: connecting RV and sa
-RFo=.01;      % Fontan connection
+Rs=18.39;    % systemic organs
+Rp=.5517;    % lungs
+RTr=0.01;    % Tricuspid valve
+RAo=0.01;    % aortic valve: connecting RV and sa
+RFo=.01;     % Fontan connection
 RFe = inf; 
+% specify dead volumes
+Vsad=0.825/1.17; %0.825
+Vpad=0.1135/1.22; %0.1135
+Vsvd=3.5/1.22; %3.5
+Vpvd=0.18/1.22;%.18
+VRVd=0.028;%0.01
+Vd=zeros(N,1);
 
 % specify compliance parameters
-Csa=0.00175*1.8;
-Cpa=0.00412*1.5;
+Csa=(0.0011/1.5)/1.35;
+Cpa=0.00412;
 Csv=0.09*1.1;
-Cpv=.01*1.5;
-CRVS=1/(3e3);
-CRVD=1/84; % 1/104
+Cpv=.01;
+
+CRVD=(.111-VRVd)/6.6;
+CRVS=(.0517-VRVd)/124;
+
+
+  
 
 %parameters for elastance
 EminRV =  1/CRVD;% (mmHg/L)
@@ -52,10 +72,6 @@ EmaxRV =  1/CRVS; % (mmHg/L)
 	    % for the pump coefficient and calculation of the total volume
 	    % used in the nonpulsatile model.
 
-dt=0.01*T;%Time step duration (minutes)
-          
-klokmax=500*T/dt; %Total number of timesteps
-%This choice implies simulation of 500 cardiac cycles.
 
 for klok=1:klokmax
   t=klok*dt;
@@ -67,12 +83,7 @@ end
 %Assign an index to each compliance vessel 
 %of the model Fontan circulation:
 %took out LV and ordered numbers by path of circulation.
-isa=1;
-isv=2;
-ipa=3;
-ipv=4;
-iRV=5;
-N=5;
+
 
 %Enter parameters and initial values 
 %into correct slots in arrays.
@@ -89,22 +100,16 @@ C(ipa)=Cpa;
 C(ipv)=Cpv;
 C;  %This writes the result on the screen.
 
-% specify dead volumes
-Vsad=0.7; %0.825
-Vpad=0.1135; %0.1135
-Vsvd=2; %3.5
-Vpvd=0.15;%.18
-VRVd=0.02;%0.01
-Vd=zeros(N,1);  
+  
 %This makes Vd a column vector of length N.
 Vd(isa)=Vsad;
 Vd(isv)=Vsvd;
 Vd(iRV)=VRVd;
 Vd(ipa)=Vpad;
 Vd(ipv)=Vpvd;
-Vd;
+Vd
 
-Vtotal=4.8; % set the total volume
+Vtotal=5; % set the total volume
 Vdist = Vtotal - sum(Vd); % in Liters
 %initialize volume of the ith compliance chamber
 V(isa)=Vdist*(C(isa)/(C(isa)+C(isv)+C(iRV)+C(ipa)+C(ipv))) + Vd(isa);
@@ -121,11 +126,11 @@ V(ipv)=Vdist*(C(ipv)/(C(isa)+C(isv)+C(iRV)+C(ipa)+C(ipv))) + Vd(ipv);
 %Pressure vector (initial values) at end of diastole:
 P=zeros(N,1);  
 %This makes P a column vector of length N.
-P(isa)= (V(isa)-Vd(isa))/C(isa); %80
-P(isv)= (V(isv)-Vd(isv))/C(isv);%8.0
-P(iRV)= (V(iRV)-Vd(iRV))/C(iRV);%5
-P(ipa)= (V(ipa)-Vd(ipa))/C(ipa);%8
-P(ipv)= (V(ipv)-Vd(ipv))/C(ipv);%5
+P(isa)= (V(isa)-Vd(isa))/C(isa);
+P(isv)= (V(isv)-Vd(isv))/C(isv);
+P(iRV)= (V(iRV)-Vd(iRV))/C(iRV);
+P(ipa)= (V(ipa)-Vd(ipa))/C(ipa);
+P(ipv)= (V(ipv)-Vd(ipv))/C(ipv);
 P; %This writes the result on the screen.
 
 
@@ -149,7 +154,7 @@ G(iRV,isa)=1/RAo;  %But G(isa,iRV)=0; (no leak)
 G(isv,ipv)=1./RFe;  
 G(ipv,isv)=1./RFe;
 
-G  %This writes the result on the screen.
+G;  %This writes the result on the screen.
 %Matrix of initial valve states:
 S=zeros(N,N);   
 %This makes S an NxN matrix filled with zeros
