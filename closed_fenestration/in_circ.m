@@ -1,6 +1,6 @@
 %filename: in_circ.m  (initialization for circ)
 
-heart_rate = 72.5; %beats per min
+heart_rate = 62.5; %beats per min 52.5 - 72.5
 T=1/heart_rate; 
 
 dt=0.01*T;%Time step duration (minutes)
@@ -10,8 +10,8 @@ klokmax=ceil(500*T/dt); %Total number of timesteps
 TS=0.0050; 
 tauS=0.0025;
 tauD=0.0075;
-tau1 = 0.269*T; % time scale of contraction (minutes)
-tau2 = 0.452*T; % duration of systole (minutes)
+tau1 = (0.269*T); % time scale of contraction (minutes)
+tau2 = (0.452*T); % duration of systole (minutes)
 m1 = 1.32;
 m2 = 27.4;
 %initialization of maxnum
@@ -37,7 +37,7 @@ iRV=5;
 
 % specify resistance parameters
 
-Rs=18.39;    % systemic organs
+Rs=18.39*1.13;    % systemic organs
 Rp=.5517;    % lungs
 RTr=0.01;    % Tricuspid valve
 RAo=0.01;    % aortic valve: connecting RV and sa
@@ -52,7 +52,7 @@ VRVd=0.028;%0.01
 Vd=zeros(N,1);
 
 % specify compliance parameters
-Csa=(0.0011/1.5)/1.35;
+Csa=(0.0011/1.5); %(0.0011/1.5)/1.35
 Cpa=0.00412;
 Csv=0.09*1.1;
 Cpv=.01;
