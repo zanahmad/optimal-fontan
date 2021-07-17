@@ -38,7 +38,7 @@ legend boxoff
 set(gca,'fontsize',18)
 
 %systemic and pulmonary flows:
-figure(4)
+figure(3)
 plot(t_plot,Q_plot([js,jp],:),'linewidth',3)
 title('Systemic and Pulmonary Flows')
 xlabel('t (min)')
@@ -48,7 +48,7 @@ legend boxoff
 set(gca,'fontsize',18)
 xlim([klokmax*dt - 5*T klokmax*dt])
 
-figure(5)%pressure-volume loops for right ventricle
+figure(4)%pressure-volume loops for right ventricle
 plot(V_plot(iRV,klokmax-T/dt:klokmax),P_plot(iRV,klokmax-T/dt:klokmax),'linewidth',3)
 hold on
 plot([VRVd,.125],[0,EminRV*(.125-VRVd)],'linewidth', 3)
@@ -61,7 +61,7 @@ title('Right Ventricular Pressure-Volume Loop')
 xlabel('V (L)')
 ylabel('P (mmHg)')
 
-figure(6)
+figure(5)
 subplot(2,1,1),plot(t_plot, V_plot.*O2_plot(1:end,:),'linewidth',3)
 xlabel('t (min)')
 ylabel('V (L)')

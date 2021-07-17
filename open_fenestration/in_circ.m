@@ -111,7 +111,7 @@ Vd(isv)=Vsvd;
 Vd(iRV)=VRVd;
 Vd(ipa)=Vpad;
 Vd(ipv)=Vpvd;
-Vd
+Vd;
 
 Vtotal=5; % set the total volume
 Vdist = Vtotal - sum(Vd); % in Liters
