@@ -58,6 +58,7 @@ RV_ES_VI = ((min(V_plot(iRV, (klokmax-10*T/dt):klokmax))/1.5)*1000); %RV end sys
 RV_ES_P = max(P_plot(iRV, (klokmax-10*T/dt):klokmax)); %RV end systolic pressure (mmHg)
 RV_ED_P = P_plot(iRV, klokmax); %RV end diastolic pressure (mmHg), assuming klokmax occurs at End Diastole
 sv_P_mean = mean(P_plot(isv, (klokmax-10*T/dt):klokmax));%vena cava mean pressure (mmHg)
+pulse_pressure = max(P_plot(isa, (klokmax-10*T/dt):klokmax)) - min(P_plot(isa, (klokmax-10*T/dt):klokmax));
 sa_sys_P = max(P_plot(isa, (klokmax-10*T/dt):klokmax)); %systemic artery systolic pressure (mmHg)
 sa_dias_P = min(P_plot(isa, (klokmax-10*T/dt):klokmax)); %systemic artery diastolic pressure (mmHg)
 sa_P_mean = mean(P_plot(isa, (klokmax-10*T/dt):klokmax)); %systemic artery mean pressure (mmHg)
@@ -71,6 +72,7 @@ fprintf('RV end systolic volume index (mL m^-2):%i \n', RV_ES_VI)
 fprintf('RV end systolic pressure (mmHg):%i \n', RV_ES_P)
 fprintf('RV end diastolic pressure (mmHg):%i \n', RV_ED_P)
 fprintf('vena cava mean pressure (mmHg):%i \n', sv_P_mean)
+fprintf('pulse pressure (mmHg):%i \n', pulse_pressure)
 fprintf('systemic artery systolic pressure (mmHg):%i \n', sa_sys_P)
 fprintf('systemic artery diastolic pressure (mmHg):%i \n', sa_dias_P)
 fprintf('systemic artery mean pressure (mmHg):%i \n', sa_P_mean)
