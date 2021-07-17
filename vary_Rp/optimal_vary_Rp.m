@@ -7,7 +7,7 @@ A0_vec = linspace(0.00,0.01, 60); %cross sectional area array in dm^2
 mean_pressure = zeros(num_compliance_chambers, length(A0_vec));
 mean_O2_concentration = zeros(num_compliance_chambers, length(A0_vec));
 mean_flow = zeros(num_resistors, length(A0_vec));
-Rp_vec = linspace(0.01, 7, 60);
+Rp_vec = linspace(0.01, 10, 60);
 for jj=1:length(Rp_vec)
     fprintf('%s %d \n', "Rp index = ", jj);
     Rp = Rp_vec(jj);
@@ -24,14 +24,14 @@ oxygen_delivery_vec = mean_O2_concentration(1,:) .* mean_flow(1,:);
 optimal_size = A0_vec(optimal_index);
 optimal_size_plot(jj) = optimal_size;
 
- save optimal_size_versus_Rp.mat
+%  save optimal_size_versus_Rp.mat
 
 end
 
-%figure(600)
-% plot( Rp_vec,A0_vec.*100,'linewidth',5);
-% ylabel('$A_{0}$ (cm$^2$)','interpreter','latex')
-% xlabel('$R_p$ mmHg/(L/min)','interpreter','latex')
-% title('optimal fenestration size','interpreter','latex')
-% set(gca,'fontsize',18)
+figure(600)
+plot( Rp_vec,A0_vec.*100,'linewidth',5);
+ylabel('$A_{0}$ (cm$^2$)','interpreter','latex')
+xlabel("R$_p$ mmHg/(L/min)",'interpreter','latex')
+title('optimal fenestration size','interpreter','latex')
+set(gca,'fontsize',18)
 
