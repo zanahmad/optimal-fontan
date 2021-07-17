@@ -19,7 +19,7 @@ xlim([klokmax*dt-5*T klokmax*dt])
 
 
 figure(2)
-plot(t_plot,P_plot([iRV,isa,ipa],:),'linewidth',3)
+subplot(2,1,1),plot(t_plot,P_plot([iRV,isa,ipa],:),'linewidth',3)
 title('Pressure v. Time (RV,sa,pa)')
 xlabel('t (min)')
 ylabel('P (mmHg)')
@@ -27,9 +27,7 @@ xlim([klokmax*dt-5*T klokmax*dt])
 id = legend("RV", "sa", "pa");
 legend boxoff
 set(gca,'fontsize',18)
-
-figure(3)
-plot(t_plot,Q_plot([jTr,jAo],:),'linewidth',3)
+subplot(2,1,2),plot(t_plot,Q_plot([jTr,jAo],:),'linewidth',3)
 title('Flow v. Time (Tr and Ao)')
 xlabel('t (min)')
 ylabel('Q (L/min)')
