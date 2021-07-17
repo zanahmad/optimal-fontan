@@ -60,5 +60,15 @@ title('Right Ventricular Pressure-Volume Loop')
 xlabel('V (L)')
 ylabel('P (mmHg)')
 
-
+figure(7)
+subplot(2,1,1),plot(t_plot, V_plot.*O2_plot(1:end,:),'linewidth',3)
+xlabel('t (min)')
+ylabel('V (L)')
+id = legend('sa','sv','pa','pv','RV');
+set(id, 'location', 'northeast')
+title('O2 volume')
+xlim([klokmax*dt-5*T klokmax*dt])
+subplot(2,1,2),plot(t_plot, sum(V_plot.*O2_plot, 1),'linewidth',3)
+title('total O2 volume')
+xlim([klokmax*dt-5*T klokmax*dt])
 

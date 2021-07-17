@@ -1,6 +1,6 @@
 %filename: in_circ.m  (initialization for circ)
 
-heart_rate = 62.5; %beats per min 52.5 - 72.5
+heart_rate = 62.5; %beats per min range for Fontan based on clinical data, 52.5 - 72.5 
 T=1/heart_rate; 
 
 dt=0.01*T;%Time step duration (minutes)
@@ -52,7 +52,7 @@ VRVd=0.028;%0.01
 Vd=zeros(N,1);
 
 % specify compliance parameters
-Csa=(0.0011/1.5); %(0.0011/1.5)/1.35
+Csa=(0.0011/1.5);
 Cpa=0.00412;
 Csv=0.09*1.1;
 Cpv=.01;
@@ -107,7 +107,7 @@ Vd(isv)=Vsvd;
 Vd(iRV)=VRVd;
 Vd(ipa)=Vpad;
 Vd(ipv)=Vpvd;
-Vd
+Vd;
 
 Vtotal=5; % set the total volume
 Vdist = Vtotal - sum(Vd); % in Liters
