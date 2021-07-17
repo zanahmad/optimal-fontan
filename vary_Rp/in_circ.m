@@ -38,7 +38,6 @@ iRV=5;
 % specify resistance parameters
 
 Rs=18.39*1.13;    % systemic organs
-Rp=.5517;    % lungs
 RTr=0.01;    % Tricuspid valve
 RAo=0.01;    % aortic valve: connecting RV and sa
 RFo=.01;     % Fontan connection

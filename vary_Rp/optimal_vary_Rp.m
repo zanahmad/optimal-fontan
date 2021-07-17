@@ -29,9 +29,9 @@ optimal_size_plot(jj) = optimal_size;
 end
 
 figure(600)
-plot( Rp_vec,A0_vec.*100,'linewidth',5);
+plot( Rp_vec,optimal_size_plot,'linewidth',5);
 ylabel('$A_{0}$ (cm$^2$)','interpreter','latex')
 xlabel("R$_p$ mmHg/(L/min)",'interpreter','latex')
-title('optimal fenestration size','interpreter','latex')
+title('Optimal Fenestration Area as a function of Pulmonary Resistance','interpreter','latex')
 set(gca,'fontsize',18)
 
