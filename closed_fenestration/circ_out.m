@@ -4,13 +4,14 @@
 
 %right ventricular compliance, pressures, and flows:
 figure(1)
+subplot(2,1,1)
 plot(t_plot,C_plot(iRV,:).*1000,'linewidth',3)
 title('Compliance v. Time of RV')
 xlabel('t (min)')
 ylabel('C (mL/mmHg)')
 xlim([klokmax*dt-5*T klokmax*dt])
 
-figure(100) 
+subplot(2,1,2) 
 plot(t_plot, (1./C_plot(iRV,:))./1000, 'linewidth', 3)
 title('Elastance v. Time or RV')
 xlabel('t (min)')
@@ -60,7 +61,7 @@ title('Right Ventricular Pressure-Volume Loop')
 xlabel('V (L)')
 ylabel('P (mmHg)')
 
-figure(7)
+figure(6)
 subplot(2,1,1),plot(t_plot, V_plot.*O2_plot(1:end,:),'linewidth',3)
 xlabel('t (min)')
 ylabel('V (L)')
@@ -69,6 +70,8 @@ set(id, 'location', 'northeast')
 title('O2 volume')
 xlim([klokmax*dt-5*T klokmax*dt])
 subplot(2,1,2),plot(t_plot, sum(V_plot.*O2_plot, 1),'linewidth',3)
+xlabel('t (min)')
+ylabel('V (L)')
 title('total O2 volume')
 xlim([klokmax*dt-5*T klokmax*dt])
 
