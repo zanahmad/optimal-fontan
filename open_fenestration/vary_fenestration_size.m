@@ -3,7 +3,7 @@ clear all; close all;  clc;
 % pulsatile code below
 num_compliance_chambers = 5;
 num_resistors = 6;
-A0_vec = linspace( 0.002,  0.006, 3); %cross sectional area array in dm^2
+A0_vec = linspace(  0.004,   0.008, 3); %cross sectional area array in dm^2
 mean_pressure = zeros(num_compliance_chambers, length(A0_vec));
 mean_O2_concentration = zeros(num_compliance_chambers, length(A0_vec));
 mean_flow = zeros(num_resistors, length(A0_vec));

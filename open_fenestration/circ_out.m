@@ -4,22 +4,23 @@
 
 %right ventricular compliance, pressures, and flows:
 figure(1)
-subplot(2,1,1),plot(t_plot,P_plot([iRV],:),'linewidth',3)
+subplot(2,1,1),plot(t_plot,P_plot([iRV],:),'linewidth',2)
 title('Right Ventricular Pressure with Varying $A_0$', 'interpreter', 'latex')
 xlabel('t (min)')
 ylabel('P (mmHg)')
 xlim([klokmax*dt-5*T klokmax*dt])
+ylim([-10 165])
 hold on
-id = legend("$A_0 = 0.2$ cm$^2$", "$A_0 = 0.4$ cm$^2$","$A_0 = 0.6$ cm$^2$", 'interpreter', 'latex');
+id = legend("$A_0 = 0.4$ cm$^2$", "$A_0 = 0.6$ cm$^2$","$A_0 = 0.8$ cm$^2$", 'interpreter', 'latex');
 legend boxoff
 set(gca,'fontsize',18)
-subplot(2,1,2),plot(t_plot,P_plot([isa],:),'linewidth',3)
+subplot(2,1,2),plot(t_plot,P_plot([isa],:),'linewidth',2)
 title('Blood Pressure with Varying $A_0$', 'interpreter', 'latex')
 xlabel('t (min)')
 ylabel('P (mmHg)')
 xlim([klokmax*dt-5*T klokmax*dt])
 hold on
-id = legend("$A_0 = 0.2$ cm$^2$", "$A_0 = 0.4$ cm$^2$","$A_0 = 0.6$ cm$^2$", 'interpreter', 'latex');
+id = legend("$A_0 = 0.4$ cm$^2$", "$A_0 = 0.6$ cm$^2$","$A_0 = 0.8$ cm$^2$", 'interpreter', 'latex');
 legend boxoff
 set(gca,'fontsize',18)
 
@@ -30,7 +31,7 @@ title('Systemic Flows for Varying $A_0$', 'interpreter', 'latex')
 xlabel('t (min)')
 ylabel('Q (L/min)')
 hold on
-id = legend("$A_0 = 0.2$ cm$^2$", "$A_0 = 0.4$ cm$^2$","$A_0 = 0.6$ cm$^2$", 'interpreter', 'latex');
+id = legend("$A_0 = 0.4$ cm$^2$", "$A_0 = 0.6$ cm$^2$","$A_0 = 0.8$ cm$^2$", 'interpreter', 'latex');
 legend boxoff
 set(gca,'fontsize',18)
 xlim([klokmax*dt-5*T klokmax*dt])
@@ -39,7 +40,7 @@ title('Pulmonary Flows for Varying $A_0$', 'interpreter', 'latex')
 xlabel('t (min)')
 ylabel('Q (L/min)')
 hold on
-id = legend("$A_0 = 0.2$ cm$^2$", "$A_0 = 0.4$ cm$^2$","$A_0 = 0.6$ cm$^2$", 'interpreter', 'latex');
+id = legend("$A_0 = 0.4$ cm$^2$", "$A_0 = 0.6$ cm$^2$","$A_0 = 0.8$ cm$^2$", 'interpreter', 'latex');
 legend boxoff
 set(gca,'fontsize',18)
 xlim([klokmax*dt-5*T klokmax*dt])
@@ -50,7 +51,7 @@ title('Pressure Volume Loop RV')
 xlabel('V (L)')
 ylabel('P (mmHg)')
 hold on
-id = legend("$A_0 = 0.2$ cm$^2$", "$A_0 = 0.4$ cm$^2$","$A_0 = 0.6$ cm$^2$", 'interpreter', 'latex');
+id = legend("$A_0 = 0.4$ cm$^2$", "$A_0 = 0.6$ cm$^2$","$A_0 = 0.8$ cm$^2$", 'interpreter', 'latex');
 legend boxoff
 set(gca,'fontsize',18)
 
@@ -62,7 +63,7 @@ xlabel('t (min)')
 ylabel('Q (L/min)')
 xlim([klokmax*dt-5*T klokmax*dt])
 hold on 
-id = legend("$A_0 = 0.2$ cm$^2$", "$A_0 = 0.4$ cm$^2$","$A_0 = 0.6$ cm$^2$", 'interpreter', 'latex');
+id = legend("$A_0 = 0.4$ cm$^2$", "$A_0 = 0.6$ cm$^2$","$A_0 = 0.8$ cm$^2$", 'interpreter', 'latex');
 legend boxoff
 set(gca,'fontsize',18)
 xlim([klokmax*dt-5*T klokmax*dt])

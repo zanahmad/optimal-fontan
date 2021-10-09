@@ -68,7 +68,7 @@ ylabel('V (L)')
 id = legend('sa','sv','pa','pv','RV');
 set(id, 'location', 'northeast')
 title('Oxygen volume in each chamber')
-xlim([klokmax*dt-5*T klokmax*dt])
+%xlim([klokmax*dt-5*T klokmax*dt])
 subplot(2,1,2),plot(t_plot, O2_plot([2,5],:),'linewidth',3)
 xlabel('t (min)')
 ylabel('[O$_2]$','interpreter','latex')

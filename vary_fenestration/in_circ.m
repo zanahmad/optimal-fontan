@@ -1,5 +1,5 @@
 %filename: in_circ.m  (initialization for circ)
-
+num_fixed_iter = 10; 
 heart_rate = 62.5; %beats per min 52.5 - 72.5
 T=1/heart_rate; 
 
@@ -38,7 +38,7 @@ iRV=5;
 % specify resistance parameters
 
 Rs=18.39*1.13;    % systemic organs
-Rp=.5517;    % lungs
+Rp=.5517;   % lungs 
 RTr=0.01;    % Tricuspid valve
 RAo=0.01;    % aortic valve: connecting RV and sa
 RFo=.01;     % Fontan connection

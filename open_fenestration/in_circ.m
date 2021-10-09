@@ -64,7 +64,7 @@ Cpv=.01;
 CRVD=(.111-VRVd)/6.6;
 CRVS=(.0517-VRVd)/124;
 
-
+num_fixed_pt_iter = 10; 
   
 
 %parameters for elastance

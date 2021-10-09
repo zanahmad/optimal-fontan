@@ -1,5 +1,5 @@
 %filename: in_circ.m  (initialization for circ)
-
+num_fixed_iter =10; 
 heart_rate = 62.5; %beats per min 52.5 - 72.5
 T=1/heart_rate; 
 

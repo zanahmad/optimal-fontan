@@ -17,25 +17,28 @@ for klok=1:klokmax
   %of them in the appropriate slot in the array C:
   %C(iRV)=CV_now(t,CRVS,CRVD);
   C(iRV)=1/elastance(t,T,tau1,tau2,m1,m2,EminRV,EmaxRV,maxnum);
-  %find self-consistent valve states and pressures:
-  set_valves
-  %store variables in arrays for future plotting:
+  for j=1:num_fixed_iter
+      %find self-consistent valve states and pressures:
+      set_valves
+      %store variables in arrays for future plotting:
+
+      Pdiff=P(iU)-P(iD); %pressure differences 
+                         %for flows of interest:
+      Q_plot(:,klok)=(Gf.*(Pdiff>0)+Gr.*(Pdiff<0)).*Pdiff;
+      %(the net flow is computed in each case)
+      if A0 >0
+          RFe = R_visc + rho.*abs(Q_plot(jFe,klok))./(2.*A0^2);
+          G(isv,ipv)=1./RFe;  
+          G(ipv,isv)=1./RFe;
+          Gf(jFe)=1./RFe;
+          Gr(jFe)=1./RFe; 
+      end
+  end
   t_plot(klok)=t;
   C_plot(:,klok)=C;
   P_plot(:,klok)=P;
   V_plot(:,klok)=Vd+C.*P;
-  V = Vd+C.*P; 
-  Pdiff=P(iU)-P(iD); %pressure differences 
-                     %for flows of interest:
-  Q_plot(:,klok)=(Gf.*(Pdiff>0)+Gr.*(Pdiff<0)).*Pdiff;
-  %(the net flow is computed in each case)
-  if A0 >0
-      RFe = R_visc + rho.*abs(Q_plot(jFe,klok))./(2.*A0^2);
-      G(isv,ipv)=1./RFe;  
-      G(ipv,isv)=1./RFe;
-      Gf(jFe)=1./RFe;
-      Gr(jFe)=1./RFe; 
-  end
+  V = Vd+C.*P;
   RFe_plot(:,klok)=RFe;
   A0_plot(:,klok)=A0;
   Qp = S(ipa,ipv)*G(ipa,ipv)*(P(ipa)-P(ipv));
