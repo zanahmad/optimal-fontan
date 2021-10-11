@@ -37,7 +37,7 @@ plot( Rp_vec,optimal_size_plot.*100,'linewidth',5);
 ylabel('$A_{0}$ (cm$^2$)','interpreter','latex')
 xlabel("R$_p$ mmHg/(L/min)",'interpreter','latex')
 title('Optimal Fenestration Area v. Pulmonary Resistance','interpreter','latex')
-set(gca,'fontsize',18);
+set(gca,'fontsize',18)
 
 % figure(102)
 % plot(Rp_vec, benefit.*100, 'linewidth', 5);
